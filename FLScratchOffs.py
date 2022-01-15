@@ -16,5 +16,9 @@ table = soup.find("table")
 headers = [header.text for header in table.find_all('th')]
 results = [{headers[i]: cell.text.strip() for i, cell in enumerate(row.find_all('td'))}for row in table.find_all('tr')]
 
-for x in results:
-    print(x, end="\n")
+del results[0]
+
+for x in range(len(results)):
+    print("Game Name:",results[x]["Game Name"],"| Top Prize:",results[x]["Top Prize"],
+    "| Top Prizes Remaining:",results[x]["Top Prizes Remaining"],
+    "| Ticket Cost:",results[x]["Ticket Cost"], end="\n")
