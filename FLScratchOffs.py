@@ -18,7 +18,17 @@ results = [{headers[i]: cell.text.strip() for i, cell in enumerate(row.find_all(
 
 del results[0]
 
-for x in range(len(results)):
-    print("Game Name:",results[x]["Game Name"],"| Top Prize:",results[x]["Top Prize"],
-    "| Top Prizes Remaining:",results[x]["Top Prizes Remaining"],
-    "| Ticket Cost:",results[x]["Ticket Cost"], end="\n")
+sort_dict = sorted(results, key=lambda i:i["Game Number"])
+#sort_dict = sorted(results, key=lambda i: i["Ticket Cost"])
+
+#print(sort_dict)
+
+for x in range(len(sort_dict)):
+    print(
+    #"Game Number:",sort_dict[x]["Game Number"],
+    #"Ticket Cost:", sort_dict[x]["Ticket Cost"],
+    "Game Name:",sort_dict[x]["Game Name"],"| Top Prize:",sort_dict[x]["Top Prize"],
+    "| Top Prizes Remaining:",sort_dict[x]["Top Prizes Remaining"],
+    "| Ticket Cost:",sort_dict[x]["Ticket Cost"], 
+    end="\n"
+    )
